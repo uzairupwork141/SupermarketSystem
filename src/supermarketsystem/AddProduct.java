@@ -7,6 +7,7 @@ package supermarketsystem;
 import java.util.*;
 import codeFiles.ConnectDB;
 import codeFiles.FieldSetting;
+import codeFiles.GetStoreInfo;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -478,6 +479,7 @@ public class AddProduct extends javax.swing.JFrame {
         bgpanal1.add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 70, 50));
 
         button5.setBackground(new java.awt.Color(204, 255, 204));
+        button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-home-40 (1).png"))); // NOI18N
         button5.setText("BACK");
         button5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button5.setShadowColor(new java.awt.Color(0, 0, 0));
@@ -486,7 +488,7 @@ public class AddProduct extends javax.swing.JFrame {
                 button5ActionPerformed(evt);
             }
         });
-        bgpanal1.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 660, 130, 50));
+        bgpanal1.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 660, 210, 60));
 
         button3.setText("X");
         button3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -503,7 +505,7 @@ public class AddProduct extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setLabelFor(IDtxt);
         jLabel2.setText("ID");
-        pane31.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 110, 30));
+        pane31.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -515,19 +517,19 @@ public class AddProduct extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setLabelFor(PNAMEtxt);
         jLabel4.setText("DESCRIPTION");
-        pane31.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 110, 30));
+        pane31.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setLabelFor(PNAMEtxt);
         jLabel6.setText("PRICE");
-        pane31.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 110, 30));
+        pane31.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 110, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setLabelFor(PNAMEtxt);
         jLabel7.setText("STOCK");
-        pane31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 30));
+        pane31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 110, 30));
 
         IDtxt.setEditable(false);
         IDtxt.setBackground(new java.awt.Color(255, 204, 204));
@@ -537,6 +539,7 @@ public class AddProduct extends javax.swing.JFrame {
         pane31.add(IDtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
 
         button1.setBackground(new java.awt.Color(255, 102, 102));
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-delete-36.png"))); // NOI18N
         button1.setText("DELETE");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button1.setRippleColor(new java.awt.Color(0, 153, 153));
@@ -558,9 +561,10 @@ public class AddProduct extends javax.swing.JFrame {
                 button2ActionPerformed(evt);
             }
         });
-        pane31.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 110, 50));
+        pane31.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 200, 50));
 
         button4.setBackground(new java.awt.Color(255, 204, 204));
+        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-refresh-36.png"))); // NOI18N
         button4.setText("NEW");
         button4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button4.setRippleColor(new java.awt.Color(0, 153, 153));
@@ -643,6 +647,7 @@ public class AddProduct extends javax.swing.JFrame {
         pane31.add(BARCODEtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 200, 50));
 
         savebtn.setBackground(new java.awt.Color(204, 255, 204));
+        savebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-submit-48.png"))); // NOI18N
         savebtn.setText("SAVE");
         savebtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         savebtn.setRippleColor(new java.awt.Color(0, 153, 153));
@@ -662,7 +667,7 @@ public class AddProduct extends javax.swing.JFrame {
                 button7ActionPerformed(evt);
             }
         });
-        pane31.add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 110, 50));
+        pane31.add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 200, 50));
 
         PNAMEtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         PNAMEtxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -717,7 +722,7 @@ public class AddProduct extends javax.swing.JFrame {
 
         bgpanal1.add(pane31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 1100, 490));
 
-        getContentPane().add(bgpanal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 710));
+        getContentPane().add(bgpanal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 730));
 
         pack();
         setLocationRelativeTo(null);
@@ -774,8 +779,12 @@ public class AddProduct extends javax.swing.JFrame {
             JasperDesign jd = JRXmlLoader.load(in);
             JasperReport jr = JasperCompileManager.compileReport(jd);
             HashMap para = new HashMap();
+            
+            GetStoreInfo store  =new GetStoreInfo();
+            String []store_data =store.getData();
+            
             para.put("code", BARCODEtxt.getText());
-            para.put("Storename", "XYZ Store");
+            para.put("Storename", store_data[1]);
             para.put("Price", PRICEtxt.getText());
 
             JasperPrint j = JasperFillManager.fillReport(jr, para,con);

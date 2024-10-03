@@ -4,6 +4,13 @@
  */
 package supermarketsystem;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  *
  * @author Gouhar Ali
@@ -18,6 +25,58 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
         this.setBackground(new Color(0,0,0,0));
     }
 
+    
+           
+    public String currentdate(){
+        Calendar cal=new GregorianCalendar();
+        int month=cal.get(Calendar.MONTH);
+        int year =cal.get(Calendar.YEAR);
+        int day=cal.get(Calendar.DAY_OF_MONTH);
+        if(month==12){
+            month=1;
+        }else{
+            month++;
+        }
+        return String.valueOf(day+"_"+month+"_"+year);
+    }
+    
+
+    
+    
+    
+    public static void exportDatabase(String host, String port, String dbName, String user, String password, String outputFile, String mysqldumpPath) {
+        try {
+            // Build the mysqldump command
+            String command = mysqldumpPath + " -h " + host + " -P " + port + " -u " + user +
+                    (password.isEmpty() ? "" : " -p" + password) + " " + dbName + " -r " + outputFile;
+
+            // Create a ProcessBuilder to run the command
+            ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", command);
+            pb.redirectErrorStream(true);  // Merge error stream into output stream
+
+            // Start the process
+            Process process = pb.start();
+
+            // Read the process output
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);  // Print command output (optional)
+            }
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+            if (exitCode == 0) {
+                System.out.println("Database exported successfully to " + outputFile);
+            } else {
+                System.out.println("Error occurred during export. Exit code: " + exitCode);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,11 +88,13 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
 
         bgpanal1 = new panal.bgpanal();
         pane11 = new panal.pane1();
-        button2 = new ALL_UI_1.Button();
         button3 = new ALL_UI_1.Button();
         button4 = new ALL_UI_1.Button();
-        button5 = new ALL_UI_1.Button();
         jLabel1 = new javax.swing.JLabel();
+        button6 = new ALL_UI_1.Button();
+        button7 = new ALL_UI_1.Button();
+        button2 = new ALL_UI_1.Button();
+        button5 = new ALL_UI_1.Button();
         pane21 = new panal.pane2();
         button1 = new ALL_UI_1.Button();
         jLabel2 = new javax.swing.JLabel();
@@ -43,17 +104,9 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-seller-50.png"))); // NOI18N
-        button2.setText("ADD SALESMAN");
-        button2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        button2.setRippleColor(new java.awt.Color(0, 153, 153));
-        button2.setShadowColor(new java.awt.Color(0, 0, 0));
-        button2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
-            }
-        });
+        bgpanal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-category-48.png"))); // NOI18N
         button3.setText("ADD CATEGORI");
@@ -65,6 +118,7 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
                 button3ActionPerformed(evt);
             }
         });
+        pane11.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 93));
 
         button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-pos-100.png"))); // NOI18N
         button4.setText("SALE ( POS )");
@@ -76,6 +130,42 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
                 button4ActionPerformed(evt);
             }
         });
+        pane11.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, 110));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HOME");
+        pane11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 214, 70));
+
+        button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-database-syncing-complete-local-drive-and-connected-with-other-pc-48.png"))); // NOI18N
+        button6.setText("BACKUP");
+        button6.setRound(20);
+        button6.setShadowColor(new java.awt.Color(255, 255, 51));
+        button6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button6ActionPerformed(evt);
+            }
+        });
+        pane11.add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 770, 210, 61));
+
+        button7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-logout-30.png"))); // NOI18N
+        button7.setText("LOGOUT");
+        button7.setRound(20);
+        button7.setShadowColor(new java.awt.Color(255, 255, 51));
+        pane11.add(button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 210, 61));
+
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-seller-50.png"))); // NOI18N
+        button2.setText("ADD SALESMAN");
+        button2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        button2.setRippleColor(new java.awt.Color(0, 153, 153));
+        button2.setShadowColor(new java.awt.Color(0, 0, 0));
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
+        pane11.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 210, 90));
 
         button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-products-50.png"))); // NOI18N
         button5.setText("PRODUCTS");
@@ -87,45 +177,9 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
                 button5ActionPerformed(evt);
             }
         });
+        pane11.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 210, 90));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HOME");
-
-        javax.swing.GroupLayout pane11Layout = new javax.swing.GroupLayout(pane11);
-        pane11.setLayout(pane11Layout);
-        pane11Layout.setHorizontalGroup(
-            pane11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pane11Layout.createSequentialGroup()
-                .addGroup(pane11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pane11Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pane11Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(pane11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(20, 20, 20))
-        );
-        pane11Layout.setVerticalGroup(
-            pane11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pane11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                .addGap(33, 33, 33)
-                .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(button5, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(388, 388, 388))
-        );
+        bgpanal1.add(pane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 58, -1, 840));
 
         button1.setText("X");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -135,54 +189,18 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        pane21.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 0, 40, -1));
+        pane21.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 0, 40, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("POS SOFTWARE");
         pane21.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, -1));
 
-        javax.swing.GroupLayout bgpanal1Layout = new javax.swing.GroupLayout(bgpanal1);
-        bgpanal1.setLayout(bgpanal1Layout);
-        bgpanal1Layout.setHorizontalGroup(
-            bgpanal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgpanal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pane32, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                .addGap(94, 94, 94)
-                .addComponent(pane34, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                .addGap(89, 89, 89)
-                .addComponent(pane31, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(pane21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        bgpanal1Layout.setVerticalGroup(
-            bgpanal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgpanal1Layout.createSequentialGroup()
-                .addComponent(pane21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(bgpanal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pane11, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
-                    .addGroup(bgpanal1Layout.createSequentialGroup()
-                        .addGroup(bgpanal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pane32, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                            .addComponent(pane34, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(pane31, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        bgpanal1.add(pane21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 40));
+        bgpanal1.add(pane31, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 290, 170));
+        bgpanal1.add(pane32, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 58, 283, 175));
+        bgpanal1.add(pane34, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 290, 170));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgpanal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgpanal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(bgpanal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 910));
 
         pack();
         setLocationRelativeTo(null);
@@ -216,6 +234,25 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
         dispose();
         new AddSeller().setVisible(true);
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button6ActionPerformed
+      
+        
+        
+       String dbHost = "localhost";
+        String dbPort = "3306";
+        String dbName = "shop_db";  // Replace with your database name
+        String dbUser = "root";               // XAMPP default user is 'root'
+        String dbPassword = "";               // XAMPP default password for root is empty
+        String outputFile = "E:\\db_backup\\backup_"+currentdate()+".sql";  // Path where you want to store the SQL file
+
+        // Specify the path to the mysqldump executable in XAMPP
+        String mysqldumpPath = "C:/xampp/mysql/bin/mysqldump.exe";
+
+        exportDatabase(dbHost, dbPort, dbName, dbUser, dbPassword, outputFile, mysqldumpPath);
+        
+            
+    }//GEN-LAST:event_button6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +296,8 @@ public class ADMIN_MAIN extends javax.swing.JFrame {
     private ALL_UI_1.Button button3;
     private ALL_UI_1.Button button4;
     private ALL_UI_1.Button button5;
+    private ALL_UI_1.Button button6;
+    private ALL_UI_1.Button button7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private panal.pane1 pane11;

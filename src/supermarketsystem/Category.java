@@ -195,28 +195,28 @@ public class Category extends javax.swing.JFrame {
         bgpanal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(221, 217, 217));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ADD CATEGORI");
-        pane31.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 370, 60));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS_files/icons8-category-100.png"))); // NOI18N
+        jLabel3.setText("ADD CATEGORY");
+        pane31.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 770, 110));
 
         date.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("DATE");
-        pane31.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 410, 30));
+        pane31.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 410, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("ID");
-        pane31.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 50, 50));
+        pane31.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 50, 50));
 
         IDtxt.setEditable(false);
         IDtxt.setBackground(new java.awt.Color(255, 204, 204));
         IDtxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         IDtxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         IDtxt.setBorder(null);
-        pane31.add(IDtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 250, 50));
+        pane31.add(IDtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 250, 50));
 
         ITEMtxt.setBackground(new java.awt.Color(204, 255, 255));
         ITEMtxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -232,23 +232,23 @@ public class Category extends javax.swing.JFrame {
                 ITEMtxtKeyTyped(evt);
             }
         });
-        pane31.add(ITEMtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 250, 50));
+        pane31.add(ITEMtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 250, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("CATEGORI");
-        pane31.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 50));
+        pane31.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 110, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Description");
-        pane31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 360, 40));
+        pane31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 360, 40));
 
         DEStxt.setColumns(20);
         DEStxt.setRows(5);
         jScrollPane2.setViewportView(DEStxt);
 
-        pane31.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 360, 140));
+        pane31.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 360, 140));
 
         saveBtn.setText("SAVE");
         saveBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -260,7 +260,7 @@ public class Category extends javax.swing.JFrame {
                 saveBtnActionPerformed(evt);
             }
         });
-        pane31.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 420, 70));
+        pane31.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 420, 70));
 
         savebtn1.setText("NEW");
         savebtn1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -272,7 +272,7 @@ public class Category extends javax.swing.JFrame {
                 savebtn1ActionPerformed(evt);
             }
         });
-        pane31.add(savebtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 200, 70));
+        pane31.add(savebtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 200, 70));
 
         button2.setBackground(new java.awt.Color(255, 204, 204));
         button2.setText("DELETE");
@@ -285,7 +285,7 @@ public class Category extends javax.swing.JFrame {
                 button2ActionPerformed(evt);
             }
         });
-        pane31.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 200, 70));
+        pane31.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 200, 70));
 
         button1.setText("BACK");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

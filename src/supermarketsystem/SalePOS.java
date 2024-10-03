@@ -1144,11 +1144,14 @@ public class SalePOS extends javax.swing.JFrame {
 
     private void mainSearchtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainSearchtxtActionPerformed
         // TODO add your handling code here:
-        if(getProductByIDOrCode("product_barcode",mainSearchtxt.getText())){
+        if(getProductByIDOrCode("product_barcode",mainSearchtxt.getText())==true){
             mainSearchtxt.setText("");
-            QTYtxt.requestFocus();   
+            QTYtxt.requestFocus();
+            return;
         }
-        
+        JOptionPane.showMessageDialog(this,"No product found","no data",2);
+        mainSearchtxt.setText("");
+            
         
     }//GEN-LAST:event_mainSearchtxtActionPerformed
 
